@@ -85,7 +85,7 @@ class BasicClassifierModule():
         avg_acc_percent_for_name = int(np.around(100 * avg_acc))
 
         result = {
-            "주관 평가 경계": self.condition,
+            "분류 감성": self.condition,
             "사용된 HRV 지표": data.columns.tolist(),
             "분류기 종류": "basic",
             "Kfold 수": num_folds,

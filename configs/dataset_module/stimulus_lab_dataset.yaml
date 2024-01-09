@@ -1,0 +1,4 @@
+_target_: src.dataset_modules.stimulus_dataset.StimulusDataset
+df_path: ${data_path}/${data_name}
+meaningful_features: ${meaningful_features}
+condition: ${condition}

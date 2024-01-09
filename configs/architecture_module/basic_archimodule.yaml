@@ -1,0 +1,4 @@
+_target_: src.architecture_modules.basic_archimodule.BasicClassifierModule
+condition: ${condition}
+model_save_path: ${model_save_path}
+result_path: ${result_path}

@@ -1,0 +1,58 @@
+file_controller:
+  _target_: src.hrv_preprocess.file_control.FileController
+  all_files_path: ${project_dir}/${dataset_path}/${dataset}/data
+  emotions_raw_path: ${project_dir}/${dataset_path}/${dataset}/${emotions_path}/${raw_hrv}
+  information_df_path : ${project_dir}/${tabular_dataset_path}/${template_file}
+  info_columns: ${info_columns}
+  template_data_path: ${project_dir}/${dataset_path}/${dataset}/${average_hrv_path}
+  template_data_name: ${normalized_hrv}_1
+  emotions: ${emotions}
+  template_save_path: ${project_dir}/${tabular_dataset_path}/${test_dataset}
+  template_sheet_name: ${normalized_hrv}
+
+normalization:
+  _target_: src.hrv_preprocess.normalization.Normalization
+  raw_path: ${project_dir}/${dataset_path}/${dataset}/${emotions_path}/${raw_hrv}
+  emotions: ${emotions}
+  reference: reference
+  save_path: ${project_dir}/${dataset_path}/${dataset}/${emotions_path}/${normalized_hrv}
+
+average:
+  _target_: src.hrv_preprocess.average.Average
+  data_path: ${project_dir}/${dataset_path}/${dataset}/${emotions_path}/${normalized_hrv}
+  emotions: ${emotions}
+  save_path: ${project_dir}/${dataset_path}/${dataset}/${average_hrv_path}
+  save_name: ${normalized_hrv}_1
+
+augmentation:
+  _target_: src.hrv_preprocess.augmentation.Augmentation
+  information_df_path : ${project_dir}/${tabular_dataset_path}/${template_file}
+  info_columns: ${info_columns}
+  repeat: 60
+  data_path: ${project_dir}/${dataset_path}/${dataset}/${emotions_path}/${normalized_hrv}
+  emotions: ${emotions}
+  save_path: ${project_dir}/${tabular_dataset_path}/${dataset}_augmented.xlsx
+  sheet_name: ${normalized_hrv}
+
+statistical_analysis:
+  _target_: src.hrv_preprocess.statistical_analysis.StatisticalAnalysis
+  df_path: ${project_dir}/${tabular_dataset_path}/${test_dataset}
+  features: ${hrv_features}
+  emotions: 
+    - stress
+    - arousal
+    - valence
+  standards: 
+    - compound
+    - survey
+  conditions: 
+    - extreme
+    - normal
+  filter_outlier: 
+    - True
+    - False
+  methods: 
+    - t_test
+    - anova
+  result_path: ${project_dir}/result_reports
+  result_name: ${dataset}_analyze_statistics_results.csv

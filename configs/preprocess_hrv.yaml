@@ -1,0 +1,47 @@
+# @package _global_
+defaults:
+  - hrv_preprocess: hrv_preprocess
+  - hydra: hydra
+
+project_dir: C:/Users/ddang/Desktop/projects/hrv-emotion
+dataset: sl
+dataset_path: dataset
+tabular_dataset_path: tabular_dataset
+emotions_path: emotions
+average_hrv_path: stimulus_preprocessed
+raw_hrv: raw
+normalized_hrv: normalized
+info_columns: 5
+emotions: 
+  - hahv
+  - halv
+  - lahv
+  - lalv
+hrv_features:
+  - RRI
+  - BPM
+  - SDNN
+  - rMSSD
+  - VLF
+  - LF
+  - HF
+  - VLFp
+  - LFp
+  - HFp
+  - lnVLF
+  - lnLF
+  - lnHF
+  - VLF/HF
+  - LF/HF
+  - tPow
+  - dPow
+  - dHz
+  - pPow
+  - pHz
+  - CohRatio
+  - RSA_PB
+template_file: ${dataset}_template.xlsx
+test_dataset: ${dataset}_test_dataset.xlsx
+
+run_name: preprocess_hrv
+work_dir: ${hydra:runtime.cwd}

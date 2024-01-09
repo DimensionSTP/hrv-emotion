@@ -9,3 +9,4 @@ __pycache__
 tmp*
 logs/
 wandb/
+!requirements.txt

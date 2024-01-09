@@ -4,6 +4,7 @@ defaults:
   - hydra: hydra
 
 project_dir: C:/Users/ddang/Desktop/projects/hrv-emotion
+root_dataset: sl
 dataset: sl
 data_path: ${project_dir}/dataset/${dataset}/signals
 window_size: 180

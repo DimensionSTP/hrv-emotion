@@ -8,4 +8,4 @@ biopac_data_slicer:
   _target_: src.signal_preprocess.biopac_data_slicer.BioPacDataSlicer
   log_path: ${project_dir}/dataset/${dataset}/logs
   data_path: ${project_dir}/dataset/${dataset}/raw_datas
-  save_path: ${project_dir}/dataset/${dataset}/signals
+  save_path: ${data_path}

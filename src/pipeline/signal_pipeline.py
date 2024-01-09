@@ -15,11 +15,11 @@ def get_hrv(config: DictConfig) -> None:
     if not os.path.exists(config.save_path):
         os.makedirs(config.save_path, exist_ok=True)
 
-    if config.dataset == "sl":
+    if config.root_dataset == "sl":
         biopac_data_slicer = signal_setup.get_biopac_data_slicer()
         biopac_data_slicer()
         signal_column = 1
-    elif config.dataset == "thirty" or config.dataset == "sl_rppg":
+    elif config.root_dataset == "thirty" or config.root_dataset == "sl_rppg":
         signal_column = 0
     else:
         raise ValueError("Unvalid dataset")

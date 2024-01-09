@@ -1,0 +1,39 @@
+# @package _global_
+defaults:
+  - signal_preprocess: signal_preprocess
+  - hydra: hydra
+
+project_dir: C:/Users/ddang/Desktop/projects/hrv-emotion
+dataset: sl
+data_path: ${project_dir}/dataset/${dataset}/signals
+window_size: 180
+sampling_rate: 500
+interval_size: 1
+save_path: ${project_dir}/dataset/${dataset}/data
+hrv_features:
+  - RRI
+  - BPM
+  - SDNN
+  - rMSSD
+  - pNN50
+  - VLF
+  - LF
+  - HF
+  - VLFp
+  - LFp
+  - HFp
+  - lnVLF
+  - lnLF
+  - lnHF
+  - VLF/HF
+  - LF/HF
+  - tPow
+  - dPow
+  - dHz
+  - pPow
+  - pHz
+  - CohRatio
+  - RSA_PB
+
+run_name: signal_to_hrv
+work_dir: ${hydra:runtime.cwd}

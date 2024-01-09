@@ -29,6 +29,11 @@ python rename_sl_rppg_dataset_files_in_directory.py
 ./scripts/preprocess_hrv.sh
 ```
 
+* concat augmented dataset for machine learning train dataset
+```shell
+python concat_augmented_dataset.py
+```
+
 ### Machine Learning(HRV-emotion classifier)
 
 * basic LGBM classifier training

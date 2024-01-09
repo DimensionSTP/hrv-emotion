@@ -1,0 +1,42 @@
+# @package _global_
+defaults:
+  - dataset_module: stimulus_lab_dataset
+  - architecture_module: basic_archimodule
+  - hydra: hydra
+
+project_dir: C:/Users/ddang/Desktop/projects/hrv-emotion
+
+data_path: ${project_dir}/tabular_dataset
+data_name: sl_test_dataset.xlsx
+meaningful_features:
+  - RRI
+  - BPM
+  - SDNN
+  - rMSSD
+  - pNN50
+  - VLF
+  - LF
+  - HF
+  - VLFp
+  - LFp
+  - HFp
+  - lnVLF
+  - lnLF
+  - lnHF
+  - VLF/HF
+  - LF/HF
+  - tPow
+  - dPow
+  - dHz
+  - pPow
+  - pHz
+  - CohRatio
+  - RSA_PB
+condition: arousal
+model_save_path: ${project_dir}/save_model/basic_classifier/all_features/${condition}
+result_path: ${project_dir}/result_reports
+
+result_name: basic_all_features_test_result.csv
+
+run_name: ecg_basic_test
+work_dir: ${hydra:runtime.cwd}

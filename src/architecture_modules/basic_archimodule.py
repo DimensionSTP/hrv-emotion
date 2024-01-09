@@ -83,6 +83,8 @@ class BasicClassifierModule():
 
         avg_acc_percent = np.around(100 * avg_acc, 2)
         avg_acc_percent_for_name = int(np.around(100 * avg_acc))
+        avg_f1_percent = np.around(100 * avg_f1, 2)
+        avg_f1_percent_for_name = int(np.around(100 * avg_f1))
 
         result = {
             "분류 감성": self.condition,
@@ -90,6 +92,7 @@ class BasicClassifierModule():
             "분류기 종류": "basic",
             "Kfold 수": num_folds,
             "평균 정확도(%)": avg_acc_percent,
+            "평균 f1(%)": avg_f1_percent,
         }
         result_df = pd.DataFrame.from_dict(result, orient="index").T
 
@@ -116,7 +119,7 @@ class BasicClassifierModule():
         plot_importance(classifier, ax=ax)
         if not os.path.exists(plt_save_path):
             os.makedirs(plt_save_path)
-        plt.savefig(f"{plt_save_path}/{self.condition}_basic_{num_folds}_{avg_acc_percent_for_name}.png")
+        plt.savefig(f"{plt_save_path}/{self.condition}_basic_{num_folds}_{avg_acc_percent_for_name}_{avg_f1_percent_for_name}.png")
 
     def test(
         self, 
@@ -135,12 +138,14 @@ class BasicClassifierModule():
         print(f"average accuracy : {accuracy}")
         print(f"average f1 score : {f1}")
         acc_percent = np.around(100 * accuracy, 2)
+        f1_percent = np.around(100 * f1, 2)
 
         result = {
-            "주관 평가 경계": self.condition,
+            "분류 감성": self.condition,
             "사용된 HRV 지표": data.columns.tolist(),
             "분류기 종류": "basic",
             "평균 정확도(%)": acc_percent,
+            "평균 f1(%)": f1_percent,
         }
         result_df = pd.DataFrame.from_dict(result, orient="index").T
 

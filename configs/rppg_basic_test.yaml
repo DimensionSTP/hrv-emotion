@@ -6,8 +6,9 @@ defaults:
 
 project_dir: C:/Users/ddang/Desktop/projects/hrv-emotion
 
+dataset: sl_rppg
 data_path: ${project_dir}/tabular_dataset
-data_name: sl_rppg_test_dataset.xlsx
+data_name: ${dataset}_test_dataset.xlsx
 meaningful_features:
   - RRI
   - BPM

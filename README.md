@@ -5,6 +5,21 @@
 ### Dataset
 Lab datasets collected from experiments
 
+### 🚀Quick setup
+
+```bash
+# clone project
+git clone https://github.com/DimensionSTP/hrv-emotion.git
+cd hrv-emotion
+
+# [OPTIONAL] create conda environment
+conda create -n myenv python=3.8
+conda activate myenv
+
+# install requirements
+pip install -r requirements.txt
+```
+
 ### ECG or rPPG signal to HRV
 
 * rename ECG data files before preprocessing

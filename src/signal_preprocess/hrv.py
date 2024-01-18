@@ -9,7 +9,7 @@ from .iir import IIR
 
 
 class HRV:
-    def __init__(self):
+    def __init__(self) -> None:
         self.iir = IIR()
         self.labels = [
             "Time", 

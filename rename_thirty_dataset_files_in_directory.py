@@ -1,8 +1,9 @@
 import os
+from typing import Dict
 
 from tqdm import tqdm
 
-def rename_thirty_dataset_files_in_directory(directory, mapping):
+def rename_thirty_dataset_files_in_directory(directory: str, mapping: Dict[str, str],) -> None:
     # 디렉토리 내의 모든 파일을 순회
     for filename in tqdm(os.listdir(directory)):
         parts = filename.split('_')

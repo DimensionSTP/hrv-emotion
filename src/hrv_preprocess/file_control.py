@@ -18,7 +18,7 @@ class FileController():
         emotions: List[str],
         template_save_path: str,
         template_sheet_name: str,
-    ):
+    ) -> None:
         self.all_files_path = all_files_path
         self.emotions_raw_path = emotions_raw_path
         self.information_df_path = information_df_path

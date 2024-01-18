@@ -6,7 +6,7 @@ from ..signal_preprocess.biopac_data_slicer import BioPacDataSlicer
 
 
 class SignalSetUp:
-    def __init__(self, config: DictConfig):
+    def __init__(self, config: DictConfig,) -> None:
         self.config = config
 
     def get_maxima_peak_detection(self) -> MaximaPeakDetection:

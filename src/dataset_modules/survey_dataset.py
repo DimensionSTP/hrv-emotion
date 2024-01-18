@@ -14,7 +14,7 @@ class SurveyDataset():
         standard: str, 
         condition: str, 
         filter_outlier: bool,
-    ):
+    ) -> None:
         self.meaningful_features = meaningful_features
         self.df_path = df_path
         self.emotion = emotion

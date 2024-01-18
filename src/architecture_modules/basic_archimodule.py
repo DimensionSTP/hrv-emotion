@@ -24,7 +24,7 @@ class BasicClassifierModule():
         condition: str,
         model_save_path: str,
         result_path: str,
-    ):
+    ) -> None:
         self.condition = condition
         self.model_save_path = model_save_path
         self.result_path = result_path

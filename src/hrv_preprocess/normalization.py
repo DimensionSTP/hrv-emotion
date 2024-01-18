@@ -12,7 +12,7 @@ class Normalization():
         emotions: List[str],
         reference: str,
         save_path: str,
-    ):
+    ) -> None:
         self.raw_path = raw_path
         self.emotions = emotions
         self.reference = reference

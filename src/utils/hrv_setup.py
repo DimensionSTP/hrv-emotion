@@ -9,7 +9,7 @@ from ..hrv_preprocess.statistical_analysis import StatisticalAnalysis
 
 
 class HRVSetUp:
-    def __init__(self, config: DictConfig):
+    def __init__(self, config: DictConfig,) -> None:
         self.config = config
 
     def get_file_controller(self) -> FileController:

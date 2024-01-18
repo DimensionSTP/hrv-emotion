@@ -7,7 +7,7 @@ from ..architecture_modules.basic_archimodule import BasicClassifierModule
 
 
 class MLSetUp:
-    def __init__(self, config: DictConfig):
+    def __init__(self, config: DictConfig,) -> None:
         self.config = config
 
     def get_stimulus_dataset(self) -> StimulusDataset:

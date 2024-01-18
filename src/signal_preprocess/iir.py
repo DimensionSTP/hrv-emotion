@@ -5,7 +5,7 @@ from scipy.signal import butter, lfilter, cheby1
 
 
 class IIR:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
     
     def filtered_signal(self, filter: np.ndarray,) -> np.ndarray:

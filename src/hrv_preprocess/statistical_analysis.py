@@ -20,7 +20,7 @@ class StatisticalAnalysis():
         methods: List[str],
         result_path: str,
         result_name: str,
-    ):
+    ) -> None:
         self.df = pd.read_excel(df_path).iloc[:, 1:]
         self.features = features
         self.emotions = emotions

@@ -12,7 +12,7 @@ class Average():
         emotions: List[str],
         save_path: str,
         save_name: str,
-    ):
+    ) -> None:
         self.data_path = data_path
         self.emotions = emotions
         self.save_path = save_path

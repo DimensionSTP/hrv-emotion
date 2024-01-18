@@ -9,7 +9,7 @@ class StimulusDataset():
         df_path: str,
         meaningful_features: List[str],
         condition: str,
-    ):
+    ) -> None:
         self.df_path = df_path
         self.meaningful_features = meaningful_features
         self.condition = condition

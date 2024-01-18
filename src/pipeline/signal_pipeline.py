@@ -8,7 +8,7 @@ from ..utils.signal_setup import SignalSetUp
 from ..signal_preprocess.hrv import HRV
 
 
-def get_hrv(config: DictConfig) -> None:
+def get_hrv(config: DictConfig,) -> None:
     signal_setup = SignalSetUp(config)
     hrv = HRV()
     maxima_peak_detection = signal_setup.get_maxima_peak_detection()

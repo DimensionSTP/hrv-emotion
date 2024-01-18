@@ -3,7 +3,7 @@ from omegaconf import DictConfig
 from ..utils.hrv_setup import HRVSetUp
 
 
-def preprocess_hrv(config: DictConfig) -> None:
+def preprocess_hrv(config: DictConfig,) -> None:
     hrv_setup = HRVSetUp(config)
 
     file_controller = hrv_setup.get_file_controller()

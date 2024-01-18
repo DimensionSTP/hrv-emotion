@@ -5,13 +5,14 @@ from typing import List
 from tqdm import tqdm
 import pandas as pd
 
+
 class BioPacDataSlicer():
     def __init__(
         self, 
         log_path: str, 
         data_path: str, 
         save_path: str,
-    ):
+    ) -> None:
         self.log_path = log_path
         self.data_path = data_path
         self.save_path = save_path

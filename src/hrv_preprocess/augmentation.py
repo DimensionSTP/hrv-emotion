@@ -15,7 +15,7 @@ class Augmentation():
         emotions: List[str],
         save_path: str,
         sheet_name: str,
-    ):
+    ) -> None:
         self.information_df = pd.read_excel(information_df_path)
         self.info_columns = info_columns
         self.repeat = repeat

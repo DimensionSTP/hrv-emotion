@@ -3,7 +3,7 @@ from omegaconf import DictConfig
 from ..utils.ml_setup import MLSetUp
 
 
-def train(config: DictConfig) -> None:
+def train(config: DictConfig,) -> None:
     ml_setup = MLSetUp(config)
     
     stimulus_dataset = ml_setup.get_stimulus_dataset()
@@ -22,7 +22,7 @@ def train(config: DictConfig) -> None:
         plt_save_path=config.plt_save_path,
     )
 
-def test(config: DictConfig) -> None:
+def test(config: DictConfig,) -> None:
     ml_setup = MLSetUp(config)
     
     stimulus_dataset = ml_setup.get_stimulus_dataset()

@@ -10,7 +10,7 @@ class MaximaPeakDetection():
         threshold: int,
         detrend_factor: int,
         is_display: bool,
-    ):
+    ) -> None:
         self.threshold = threshold
         self.detrend_factor = detrend_factor
         self.is_display = is_display

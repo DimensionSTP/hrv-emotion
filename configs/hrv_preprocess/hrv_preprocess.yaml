@@ -54,5 +54,5 @@ statistical_analysis:
   methods: 
     - t_test
     - anova
-  result_path: ${project_dir}/result_reports
+  result_path: ${project_dir}/result_reports/statistics
   result_name: ${dataset}_analyze_statistics_results.csv

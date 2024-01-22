@@ -1,6 +1,2 @@
-HYDRA_FULL_ERROR=1 python test.py dataset=sl_50 result_name=sl_50_basic_all_features_test_result.csv run_name=sl_50_ecg_basic_test
-HYDRA_FULL_ERROR=1 python test.py dataset=sl_50 result_name=sl_50_basic_all_features_test_result.csv run_name=sl_50_ecg_basic_test condition=valence
-HYDRA_FULL_ERROR=1 python test.py dataset=sl_100 result_name=sl_100_basic_all_features_test_result.csv run_name=sl_100_ecg_basic_test
-HYDRA_FULL_ERROR=1 python test.py dataset=sl_100 result_name=sl_100_basic_all_features_test_result.csv run_name=sl_100_ecg_basic_test condition=valence
-# HYDRA_FULL_ERROR=1 python test.py dataset=sl_250 result_name=sl_250_basic_all_features_test_result.csv run_name=sl_250_ecg_basic_test
-# HYDRA_FULL_ERROR=1 python test.py dataset=sl_250 result_name=sl_250_basic_all_features_test_result.csv run_name=sl_250_ecg_basic_test condition=valence
+HYDRA_FULL_ERROR=1 python test.py --multirun dataset=sl_50,sl_100,sl_250 condition=arousal,valence
+HYDRA_FULL_ERROR=1 python test.py --multirun --config-name=stimulus_xgb_classifier_test.yaml dataset=sl_50,sl_100,sl_250 condition=arousal,valence

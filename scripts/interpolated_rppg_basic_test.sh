@@ -1,8 +1,2 @@
-# HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_60 result_name=sl_rppg_60_basic_all_features_test_result.csv run_name=sl_rppg_60_rppg_basic_test
-# HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_60 result_name=sl_rppg_60_basic_all_features_test_result.csv run_name=sl_rppg_60_rppg_basic_test condition=valence
-HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_120 result_name=sl_rppg_120_basic_all_features_test_result.csv run_name=sl_rppg_120_rppg_basic_test
-HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_120 result_name=sl_rppg_120_basic_all_features_test_result.csv run_name=sl_rppg_120_rppg_basic_test condition=valence
-# HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_240 result_name=sl_rppg_240_basic_all_features_test_result.csv run_name=sl_rppg_240_rppg_basic_test
-# HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_240 result_name=sl_rppg_240_basic_all_features_test_result.csv run_name=sl_rppg_240_rppg_basic_test condition=valence
-HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_480 result_name=sl_rppg_480_basic_all_features_test_result.csv run_name=sl_rppg_480_rppg_basic_test
-HYDRA_FULL_ERROR=1 python test.py --config-name=rppg_basic_test.yaml dataset=sl_rppg_480 result_name=sl_rppg_480_basic_all_features_test_result.csv run_name=sl_rppg_480_rppg_basic_test condition=valence
+HYDRA_FULL_ERROR=1 python test.py --multirun dataset=sl_rppg_60,sl_rppg_120,sl_rppg_240,sl_rppg_480 condition=arousal,valence
+HYDRA_FULL_ERROR=1 python test.py --multirun --config-name=stimulus_xgb_classifier_test.yaml dataset=sl_rppg_60,sl_rppg_120,sl_rppg_240,sl_rppg_480 condition=arousal,valence

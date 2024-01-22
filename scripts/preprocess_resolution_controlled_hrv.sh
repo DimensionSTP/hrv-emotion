@@ -1,7 +1,1 @@
-HYDRA_FULL_ERROR=1 python preprocess_hrv.py dataset=sl_50
-HYDRA_FULL_ERROR=1 python preprocess_hrv.py dataset=sl_100
-# HYDRA_FULL_ERROR=1 python preprocess_hrv.py dataset=sl_250
-# HYDRA_FULL_ERROR=1 python preprocess_hrv.py dataset=sl_rppg_60
-HYDRA_FULL_ERROR=1 python preprocess_hrv.py dataset=sl_rppg_120
-# HYDRA_FULL_ERROR=1 python preprocess_hrv.py dataset=sl_rppg_240
-HYDRA_FULL_ERROR=1 python preprocess_hrv.py dataset=sl_rppg_480
+HYDRA_FULL_ERROR=1 python preprocess_hrv.py --multirun dataset=sl_50,sl_100,sl_250,sl_rppg_60,sl_rppg_120,sl_rppg_240,sl_rppg_480

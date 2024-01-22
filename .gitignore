@@ -11,4 +11,5 @@ __pycache__
 tmp*
 logs/
 wandb/
+multirun/
 !requirements.txt

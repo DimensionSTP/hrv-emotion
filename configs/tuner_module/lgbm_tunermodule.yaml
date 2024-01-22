@@ -1,0 +1,63 @@
+_target_: src.tuner_modules.lgbm_tunermodule.LGBMTunerModule
+hparams:
+  objective: binary
+  metric: binary_logloss
+  verbosity: -1
+  boosting_type: gbdt
+  learning_rate:
+    low: 0.0001
+    high: 0.1
+    log: True
+  n_estimators:
+    low: 8
+    high: 1024
+    step: 1
+    log: True
+  lambda_l1:
+    low: 0.00000001
+    high: 1.0
+  lambda_l2:
+    low: 0.00000001
+    high: 1.0
+  num_leaves:
+    low: 2
+    high: 512
+    log: False
+  max_depth:
+    low: 1
+    high: 20
+    log: False
+  feature_fraction:
+    low: 0.1
+    high: 1.0
+  bagging_fraction:
+    low: 0.1
+    high: 1.0
+  bagging_freq:
+    low: 0
+    high: 15
+    log: False
+  min_child_samples:
+    low: 1
+    high: 100
+    log: False
+  subsample:
+    low: 0.1
+    high: 1.0
+  colsample_bytree:
+    low: 0.1
+    high: 1.0
+  reg_alpha:
+    low: 0.0
+    high: 1.0
+  reg_lambda:
+    low: 0.0
+    high: 10.0
+split_size: ${split_size}
+num_folds: ${num_folds}
+metric: ${metric}
+num_trials: ${num_trials}
+seed: ${seed}
+tuning_way: ${tuning_way}
+model_name: ${model_name}
+save_path: ${save_path}

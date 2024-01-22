@@ -1,0 +1,38 @@
+_target_: src.tuner_modules.xgb_tunermodule.XGBTunerModule
+hparams:
+  objective: binary:logistic
+  eval_metric: logloss
+  booster: 
+    - gbtree
+    - gblinear
+    - dart
+  lambda_:
+    low: 0.00000001
+    high: 1.0
+  alpha:
+    low: 0.00000001
+    high: 1.0
+  max_depth:
+    low: 3
+    high: 20
+    log: False
+  eta:
+    low: 0.00000001
+    high: 1.0
+  gamma:
+    low: 0.00000001
+    high: 1.0
+  subsample:
+    low: 0.1
+    high: 1.0
+  colsample_bytree:
+    low: 0.1
+    high: 1.0
+split_size: ${split_size}
+num_folds: ${num_folds}
+metric: ${metric}
+num_trials: ${num_trials}
+seed: ${seed}
+tuning_way: ${tuning_way}
+model_name: ${model_name}
+save_path: ${save_path}

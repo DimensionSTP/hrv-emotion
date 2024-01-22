@@ -1,0 +1,55 @@
+# @package _global_
+defaults:
+  - dataset_module: stimulus_lab_dataset
+  - architecture_module: xgb_archimodule
+  - hydra: hydra
+
+project_dir: C:/Users/ddang/Desktop/projects/hrv-emotion
+
+dataset: sl_thirty_augmented
+data_path: ${project_dir}/tabular_dataset
+data_name: ${dataset}.xlsx
+meaningful_features:
+  - RRI
+  - BPM
+  - SDNN
+  - rMSSD
+  - pNN50
+  - VLF
+  - LF
+  - HF
+  - VLFp
+  - LFp
+  - HFp
+  - lnVLF
+  - lnLF
+  - lnHF
+  - VLF/HF
+  - LF/HF
+  - tPow
+  - dPow
+  - dHz
+  - pPow
+  - pHz
+  - CohRatio
+  - RSA_PB
+condition: arousal
+
+model_name: xgb
+features: all_features
+
+model_save_path: ${project_dir}/save_model/${condition}/${model_name}/${features}
+result_path: ${project_dir}/result_reports/${condition}/${model_name}
+
+num_folds: 10
+seed: 2024
+params_path: ${project_dir}/hparams/${condition}/${model_name}/original/100_trials
+result_name: ${model_name}_${features}_train_result.csv
+plt_save_path: ${project_dir}/feature_importance/${condition}/${model_name}/${features}
+
+project_name: XGBClassifier
+
+run_name: ${tags}-train
+work_dir: ${hydra:runtime.cwd}
+
+tags: ${project_name}-${dataset}-${features}

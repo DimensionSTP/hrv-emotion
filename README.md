@@ -51,17 +51,22 @@ python concat_augmented_dataset.py
 
 ### Machine Learning(HRV-emotion classifier)
 
-* basic LGBM classifier training
+* all classifier tuning
 ```shell
-./scripts/basic_train.sh
+./scripts/tune.sh
 ```
 
-* basic LGBM classifier testing(ECG)
+* all classifier training
 ```shell
-./scripts/ecg_basic_test.sh
+./scripts/train.sh
 ```
 
-* basic LGBM classifier testing(rPPG)
+* all classifier testing(ECG)
 ```shell
-./scripts/rppg_basic_test.sh
+./scripts/test.sh
+```
+
+* all classifier testing(rPPG)
+```shell
+./scripts/rppg_test.sh
 ```

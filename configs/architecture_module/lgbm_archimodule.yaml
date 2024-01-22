@@ -1,0 +1,4 @@
+_target_: src.architecture_modules.lgbm_archimodule.LGBMClassifierModule
+model_name: ${model_name}
+model_save_path: ${model_save_path}
+result_path: ${result_path}

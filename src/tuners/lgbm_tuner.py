@@ -31,8 +31,7 @@ class LGBMTuner():
         num_trials: int,
         seed: int,
         tuning_way: str,
-        model_name: str,
-        save_path: str,
+        hparams_save_path: str,
     ) -> None:
         self.hparams = hparams
         self.data = data
@@ -41,9 +40,9 @@ class LGBMTuner():
         self.num_folds = num_folds
         self.metric = metric
         self.num_trials = num_trials
-        self.save_path = f"{save_path}/{model_name}/{tuning_way}/{num_trials}_trials"
         self.seed = seed
         self.tuning_way = tuning_way
+        self.hparams_save_path = hparams_save_path
 
     def __call__(self) -> None:
         if self.tuning_way == "original":
@@ -63,10 +62,10 @@ class LGBMTuner():
         print(f"Best score : {best_score}")
         print(f"Parameters : {best_params}")
 
-        if not os.path.exists(self.save_path):
-            os.makedirs(self.save_path, exist_ok=True)
+        if not os.path.exists(self.hparams_save_path):
+            os.makedirs(self.hparams_save_path, exist_ok=True)
 
-        with open(f"{self.save_path}/best_params.json", "w") as json_file:
+        with open(f"{self.hparams_save_path}/best_params.json", "w") as json_file:
             json.dump(best_params, json_file)
 
     def get_split_dataset(self) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:

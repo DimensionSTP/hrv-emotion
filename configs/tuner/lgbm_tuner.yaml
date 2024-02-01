@@ -59,5 +59,4 @@ metric: ${metric}
 num_trials: ${num_trials}
 seed: ${seed}
 tuning_way: ${tuning_way}
-model_name: ${model_name}
-save_path: ${save_path}
+hparams_save_path: ${hparams_save_path}

@@ -1,5 +1,4 @@
 import os
-from typing import Union
 import json
 import warnings
 warnings.filterwarnings("ignore")
@@ -23,11 +22,11 @@ import matplotlib.pyplot as plt
 class XGBArchitecture():
     def __init__(
         self,
-        model_name: str,
+        run_name: str,
         model_save_path: str,
         result_path: str,
     ) -> None:
-        self.model_name = model_name
+        self.run_name = run_name
         self.model_save_path = model_save_path
         self.result_path = result_path
 
@@ -37,13 +36,14 @@ class XGBArchitecture():
         label: pd.Series,
         num_folds: int, 
         seed: int,
-        params_path: Union[str, bool],
+        is_tuned: bool,
+        hparams_save_path: str,
         result_name: str,
         plt_save_path: str,
     ) -> None:
         kf = StratifiedKFold(n_splits=num_folds, shuffle=True, random_state=seed)
-        if params_path:
-            params = json.load(open(f"{params_path}/best_params.json", "rt", encoding="UTF-8"))
+        if is_tuned:
+            params = json.load(open(f"{hparams_save_path}/best_params.json", "rt", encoding="UTF-8"))
             params["verbose"] = -1
         else:
             params = {
@@ -52,9 +52,9 @@ class XGBArchitecture():
                 "eval_metric": "logloss",
             }
 
-        wandb.init(project="hrv-emotion", entity="DimensionSTP", name=self.model_name)
+        wandb.init(project="HRV-emotion", entity="DimensionSTP", name=self.run_name)
 
-        classifier = xgb.XGBClassifier(**params, random_state=seed)
+        model = xgb.XGBClassifier(**params, random_state=seed)
 
         accs = []
         f1s = []
@@ -62,13 +62,13 @@ class XGBArchitecture():
             train_data, train_label = data.loc[idx[0]], label.loc[idx[0]]
             val_data, val_label = data.loc[idx[1]], label.loc[idx[1]]
 
-            classifier.fit(train_data, train_label, callbacks=[WandbCallback(log_model=True)])
+            model.fit(train_data, train_label, callbacks=[WandbCallback(log_model=True)])
 
             if not os.path.exists(self.model_save_path):
                 os.makedirs(self.model_save_path)
-            classifier.save_model(f"{self.model_save_path}/fold{i}.model")
+            model.save_model(f"{self.model_save_path}/fold{i}.model")
 
-            pred = classifier.predict(val_data)
+            pred = model.predict(val_data)
             accuracy = accuracy_score(val_label, pred)
             f1 = f1_score(val_label, pred)
             accs.append(accuracy)
@@ -84,7 +84,7 @@ class XGBArchitecture():
         avg_f1_percent_for_name = int(np.around(100 * avg_f1))
 
         result = {
-            "분류기 종류": self.model_name,
+            "분류기 종류": "XGBoost",
             "사용된 지표": data.columns.tolist(),
             "Kfold 수": num_folds,
             "평균 정확도(%)": avg_acc_percent,
@@ -112,10 +112,10 @@ class XGBArchitecture():
             )
 
         fig, ax = plt.subplots(figsize=(10,12))
-        plot_importance(classifier, ax=ax)
+        plot_importance(model, ax=ax)
         if not os.path.exists(plt_save_path):
             os.makedirs(plt_save_path)
-        plt.savefig(f"{plt_save_path}/{self.model_name}_{num_folds}_{avg_acc_percent_for_name}_{avg_f1_percent_for_name}.png")
+        plt.savefig(f"{plt_save_path}/num_folds{num_folds}-acc{avg_acc_percent_for_name}-f1_score{avg_f1_percent_for_name}.png")
 
     def test(
         self, 
@@ -125,9 +125,9 @@ class XGBArchitecture():
     ) -> None:
         pred_mean = np.zeros((len(data),))
         for model_file in (tqdm(os.listdir(self.model_save_path))):
-            classifier = xgb.XGBClassifier()
-            classifier.load_model(f"{self.model_save_path}/{model_file}")
-            pred = classifier.predict(data) / len((os.listdir(self.model_save_path)))
+            model = xgb.XGBClassifier()
+            model.load_model(f"{self.model_save_path}/{model_file}")
+            pred = model.predict(data) / len((os.listdir(self.model_save_path)))
             pred_mean += pred
         pred_binaries = np.around(pred_mean).astype(int)
         accuracy = accuracy_score(label, pred_binaries)
@@ -138,7 +138,7 @@ class XGBArchitecture():
         f1_percent = np.around(100 * f1, 2)
 
         result = {
-            "분류기 종류": self.model_name,
+            "분류기 종류": "XGBoost",
             "사용된 지표": data.columns.tolist(),
             "평균 정확도(%)": acc_percent,
             "평균 f1(%)": f1_percent,

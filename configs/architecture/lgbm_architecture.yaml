@@ -1,4 +1,4 @@
 _target_: src.architectures.lgbm_architecture.LGBMArchitecture
-model_name: ${model_name}
+run_name: ${run_name}
 model_save_path: ${model_save_path}
 result_path: ${result_path}

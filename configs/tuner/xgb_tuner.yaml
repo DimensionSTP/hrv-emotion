@@ -1,4 +1,4 @@
-_target_: src.tuner_modules.xgb_tunermodule.XGBTunerModule
+_target_: src.tuners.xgb_tuner.XGBTuner
 hparams:
   objective: binary:logistic
   eval_metric: logloss

@@ -20,7 +20,7 @@ from wandb.xgboost import WandbCallback
 import matplotlib.pyplot as plt
 
 
-class XGBClassifierModule():
+class XGBArchitecture():
     def __init__(
         self,
         model_name: str,

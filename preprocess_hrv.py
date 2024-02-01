@@ -1,7 +1,7 @@
 from omegaconf import DictConfig
 import hydra
 
-from src.pipeline.hrv_pipeline import preprocess_hrv
+from src.pipelines.hrv_pipeline import preprocess_hrv
 
 
 @hydra.main(config_path="configs/", config_name="preprocess_hrv.yaml")

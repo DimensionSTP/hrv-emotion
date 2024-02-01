@@ -16,7 +16,7 @@ from optuna.samplers import TPESampler
 from optuna.pruners import HyperbandPruner
 
 
-class XGBTunerModule():
+class XGBTuner():
     def __init__(
         self,
         hparams: Dict[str, Any],

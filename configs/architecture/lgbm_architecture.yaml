@@ -1,4 +1,4 @@
-_target_: src.architecture_modules.xgb_archimodule.XGBClassifierModule
+_target_: src.architectures.lgbm_architecture.LGBMArchitecture
 model_name: ${model_name}
 model_save_path: ${model_save_path}
 result_path: ${result_path}

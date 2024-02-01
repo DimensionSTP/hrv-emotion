@@ -19,7 +19,7 @@ from optuna.samplers import TPESampler
 from optuna.pruners import HyperbandPruner
 
 
-class LGBMTunerModule():
+class LGBMTuner():
     def __init__(
         self,
         hparams: Dict[str, Any],

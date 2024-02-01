@@ -4,18 +4,18 @@ from omegaconf import DictConfig
 from hydra.utils import instantiate
 
 from ..utils.ml_setup import MLSetUp
-from ..tuner_modules.lgbm_tunermodule import LGBMTunerModule
-from ..tuner_modules.xgb_tunermodule import XGBTunerModule
+from ..tuners.lgbm_tuner import LGBMTuner
+from ..tuners.xgb_tuner import XGBTuner
 
 
 def train(config: DictConfig,) -> None:
     ml_setup = MLSetUp(config)
     
     dataset = ml_setup.get_dataset()
-    classifier = ml_setup.get_architecture_module()
+    architecture = ml_setup.get_architecture()
     
     data, label = dataset()
-    classifier.train(
+    architecture.train(
         data=data,
         label=label,
         num_folds=config.num_folds,
@@ -29,10 +29,10 @@ def test(config: DictConfig,) -> None:
     ml_setup = MLSetUp(config)
     
     dataset = ml_setup.get_dataset()
-    classifier = ml_setup.get_architecture_module()
+    architecture = ml_setup.get_architecture()
     
     data, label = dataset()
-    classifier.test(
+    architecture.test(
         data=data,
         label=label,
         result_name=config.result_name,
@@ -44,7 +44,7 @@ def tune(config: DictConfig,) -> None:
     dataset = ml_setup.get_dataset()
     
     data, label = dataset()
-    tuner_module: Union[LGBMTunerModule, XGBTunerModule] = instantiate(
-        config.tuner_module, data=data, label=label
+    tuner: Union[LGBMTuner, XGBTuner] = instantiate(
+        config.tuner, data=data, label=label
     )
-    tuner_module()
+    tuner()

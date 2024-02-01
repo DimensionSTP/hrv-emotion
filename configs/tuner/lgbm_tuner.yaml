@@ -1,4 +1,4 @@
-_target_: src.tuner_modules.lgbm_tunermodule.LGBMTunerModule
+_target_: src.tuners.lgbm_tuner.LGBMTuner
 hparams:
   objective: binary
   metric: binary_logloss

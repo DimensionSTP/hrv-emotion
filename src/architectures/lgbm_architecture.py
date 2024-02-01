@@ -20,7 +20,7 @@ from wandb.lightgbm import wandb_callback, log_summary
 import matplotlib.pyplot as plt
 
 
-class LGBMClassifierModule():
+class LGBMArchitecture():
     def __init__(
         self,
         model_name: str,

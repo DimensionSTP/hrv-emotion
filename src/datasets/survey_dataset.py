@@ -5,7 +5,7 @@ warnings.filterwarnings("ignore")
 import pandas as pd
 
 
-class SurveyDataset():
+class LabDataset():
     def __init__(
         self,
         df_path: str,

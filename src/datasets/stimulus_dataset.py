@@ -3,7 +3,7 @@ from typing import List, Tuple
 import pandas as pd
 
 
-class StimulusDataset():
+class LabDataset():
     def __init__(
         self,
         df_path: str,

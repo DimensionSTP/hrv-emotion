@@ -1,5 +1,5 @@
-_target_: src.datasets.stimulus_dataset.StimulusDataset
-df_path: ${save_load_dir}/tabular_dataset/sl_thirty_augmented.xlsx
+_target_: src.datasets.stimulus_dataset.LabDataset
+df_path: ${data_path}/${data_name}
 meaningful_features:
   - RRI
   - BPM

@@ -1,4 +1,2 @@
-HYDRA_FULL_ERROR=1 python test.py dataset=sl_rppg
-HYDRA_FULL_ERROR=1 python test.py dataset=sl_rppg condition=valence
-HYDRA_FULL_ERROR=1 python test.py --config-name=stimulus_xgb_classifier_test.yaml dataset=sl_rppg
-HYDRA_FULL_ERROR=1 python test.py --config-name=stimulus_xgb_classifier_test.yaml dataset=sl_rppg condition=valence
+HYDRA_FULL_ERROR=1 python main.py --multirun mode=test data_type=sl_rppg_test_dataset condition=arousal,valence
+HYDRA_FULL_ERROR=1 python main.py --multirun --config-name=xgb.yaml mode=test data_type=sl_rppg_test_dataset condition=arousal,valence

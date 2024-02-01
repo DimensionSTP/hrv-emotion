@@ -1,2 +1,2 @@
-HYDRA_FULL_ERROR=1 python test.py --multirun dataset=sl_50,sl_100,sl_250 condition=arousal,valence
-HYDRA_FULL_ERROR=1 python test.py --multirun --config-name=stimulus_xgb_classifier_test.yaml dataset=sl_50,sl_100,sl_250 condition=arousal,valence
+HYDRA_FULL_ERROR=1 python main.py --multirun mode=test data_type=sl_50_test_dataset,sl_100_test_dataset,sl_250_test_dataset condition=arousal,valence
+HYDRA_FULL_ERROR=1 python main.py --multirun --config-name=xgb.yaml mode=test data_type=sl_50_test_dataset,sl_100_test_dataset,sl_250_test_dataset condition=arousal,valence

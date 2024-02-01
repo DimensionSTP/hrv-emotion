@@ -20,7 +20,8 @@ def train(config: DictConfig,) -> None:
         label=label,
         num_folds=config.num_folds,
         seed=config.seed,
-        params_path=config.params_path,
+        is_tuned=config.is_tuned,
+        hparams_save_path=config.hparams_save_path,
         result_name=config.result_name,
         plt_save_path=config.plt_save_path,
     )

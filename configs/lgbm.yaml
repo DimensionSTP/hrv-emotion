@@ -1,0 +1,61 @@
+# @package _global_
+defaults:
+  - dataset: stimulus_lab_dataset
+  - architecture: lgbm_architecture
+  - tuner: lgbm_tuner
+  - hydra: hydra
+
+project_dir: C:/Users/ddang/Desktop/projects/hrv-emotion
+
+mode: train
+
+seed: 2024
+
+data_path: ${project_dir}/tabular_dataset
+train_data_type: sl_thirty_augmented
+data_type: sl_thirty_augmented
+data_name: ${data_type}.xlsx
+meaningful_features:
+  - RRI
+  - BPM
+  - SDNN
+  - rMSSD
+  - pNN50
+  - VLF
+  - LF
+  - HF
+  - VLFp
+  - LFp
+  - HFp
+  - lnVLF
+  - lnLF
+  - lnHF
+  - VLF/HF
+  - LF/HF
+  - tPow
+  - dPow
+  - dHz
+  - pPow
+  - pHz
+  - CohRatio
+  - RSA_PB
+condition: arousal
+
+model_name: lgbm
+features: all_features
+
+num_folds: 10
+split_size: 0.2
+metric: f1
+num_trials: 100
+tuning_way: original
+hparams_save_path: ${project_dir}/hparams/${model_name}/${condition}/${train_data_type}/${features}/${tuning_way}/${num_trials}_trials
+
+is_tuned: False
+model_save_path: ${project_dir}/save_model/${model_name}/${condition}/${train_data_type}/${features}
+result_path: ${project_dir}/result_reports/${model_name}/${condition}/${train_data_type}/${features}
+result_name: ${mode}_result.csv
+plt_save_path: ${project_dir}/feature_importance/${model_name}/${condition}/${train_data_type}/${features}
+
+run_name: ${model_name}-${condition}-${train_data_type}-${features}-${mode}
+work_dir: ${hydra:runtime.cwd}
